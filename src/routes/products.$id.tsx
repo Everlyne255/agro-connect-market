@@ -8,23 +8,50 @@ import { ProductCard } from "@/components/product-card";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
+import { seoHead, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/$id")({
   loader: async ({ params }) => {
     const p = await fetchProduct(params.id);
     if (!p) throw notFound();
     return p;
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.name} — AgroFresh Market` },
-          { name: "description", content: loaderData.description },
-          { property: "og:title", content: loaderData.name },
-          { property: "og:description", content: loaderData.description },
-          { property: "og:image", content: loaderData.image },
-        ]
-      : [],
-  }),
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return seoHead({ title: "Product — AgroFresh Market", description: "Fresh produce from Kenyan farms.", path: `/products/${params.id}` });
+    const base = seoHead({
+      title: `${loaderData.name} — AgroFresh Market`,
+      description: loaderData.description.slice(0, 160),
+      path: `/products/${params.id}`,
+      image: loaderData.image,
+      type: "product",
+    });
+    return {
+      ...base,
+      scripts: [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: loaderData.name,
+          image: loaderData.image,
+          description: loaderData.description,
+          brand: { "@type": "Brand", name: loaderData.farmer },
+          aggregateRating: loaderData.reviews > 0 ? {
+            "@type": "AggregateRating",
+            ratingValue: loaderData.rating,
+            reviewCount: loaderData.reviews,
+          } : undefined,
+          offers: {
+            "@type": "Offer",
+            price: finalPrice(loaderData),
+            priceCurrency: "KES",
+            availability: loaderData.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            url: `${SITE_URL}/products/${params.id}`,
+          },
+        }),
+      }],
+    };
+  },
   component: ProductDetail,
   notFoundComponent: () => (
     <div className="container mx-auto px-4 py-24 text-center">
