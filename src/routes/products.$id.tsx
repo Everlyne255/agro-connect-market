@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import { getProduct, formatKES, finalPrice, products } from "@/lib/products";
+import { fetchProduct, formatKES, finalPrice, useProducts } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Star, Minus, Plus, Truck, ShieldCheck, Leaf, ArrowLeft, Heart } from "lucide-react";
 import { cartActions, wishlistActions, useWishlist } from "@/lib/cart-store";
@@ -9,8 +9,8 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/products/$id")({
-  loader: ({ params }) => {
-    const p = getProduct(params.id);
+  loader: async ({ params }) => {
+    const p = await fetchProduct(params.id);
     if (!p) throw notFound();
     return p;
   },
@@ -41,7 +41,8 @@ function ProductDetail() {
   const wish = useWishlist();
   const liked = wish.includes(p.id);
   const price = finalPrice(p);
-  const related = products.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 4);
+  const { data: all = [] } = useProducts();
+  const related = all.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 4);
 
   return (
     <div className="container mx-auto px-4 py-8 sm:px-6 sm:py-12">
