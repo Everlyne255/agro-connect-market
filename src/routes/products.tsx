@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { seoHead } from "@/lib/seo";
 
 type Search = { q?: string; cat?: Category };
 
