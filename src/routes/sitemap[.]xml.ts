@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { products } from "@/lib/products";
+import { supabase } from "@/integrations/supabase/client";
 
 const BASE_URL = "";
 
@@ -9,7 +9,8 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const staticPaths = ["/", "/products", "/about", "/contact", "/faq", "/login", "/register"];
-        const dynamic = products.map((p) => `/products/${p.id}`);
+        const { data } = await supabase.from("products").select("id");
+        const dynamic = (data ?? []).map((p: { id: string }) => `/products/${p.id}`);
         const urls = [...staticPaths, ...dynamic].map(
           (path) => `  <url><loc>${BASE_URL}${path}</loc></url>`
         );

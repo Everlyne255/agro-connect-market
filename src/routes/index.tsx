@@ -5,7 +5,7 @@ import { useNavigate } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-farm.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { categories, products } from "@/lib/products";
+import { categories, useProducts } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 
 export const Route = createFileRoute("/")({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [q, setQ] = useState("");
   const navigate = useNavigate();
+  const { data: products = [] } = useProducts();
   const featured = products.slice(0, 4);
 
   return (

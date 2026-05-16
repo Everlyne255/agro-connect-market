@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useWishlist } from "@/lib/cart-store";
-import { products } from "@/lib/products";
+import { useProducts } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
@@ -12,6 +12,7 @@ export const Route = createFileRoute("/wishlist")({
 
 function WishlistPage() {
   const ids = useWishlist();
+  const { data: products = [] } = useProducts();
   const items = products.filter((p) => ids.includes(p.id));
 
   return (
