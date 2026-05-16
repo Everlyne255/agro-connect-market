@@ -8,9 +8,16 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/register")({
   component: RegisterPage,
-  head: () => ({ meta: [{ title: "Create account — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Create your account — AgroFresh Market",
+    description: "Join AgroFresh Market to buy fresh Kenyan produce or sell as a farmer. Free to register, secure checkout with M-Pesa.",
+    path: "/register",
+    noindex: true,
+  }),
 });
 
 function RegisterPage() {
