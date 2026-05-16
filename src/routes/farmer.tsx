@@ -5,9 +5,16 @@ import { Input } from "@/components/ui/input";
 import { Plus, Pencil, Trash2, Package, TrendingUp, ShoppingBag, DollarSign } from "lucide-react";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/farmer")({
   component: FarmerDashboard,
-  head: () => ({ meta: [{ title: "Farmer Dashboard — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Farmer dashboard — AgroFresh Market",
+    description: "Manage your farm listings, track stock, and review orders and revenue on AgroFresh Market.",
+    path: "/farmer",
+    noindex: true,
+  }),
 });
 
 const STATS = [
@@ -67,11 +74,11 @@ function FarmerDashboard() {
                   <div className="text-xs text-muted-foreground">{formatKES(p.price)} · {p.unit}</div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Input type="number" defaultValue={p.stock} className="h-9 w-20" />
+                  <Input aria-label={`Stock for ${p.name}`} type="number" defaultValue={p.stock} className="h-9 w-20" />
                   <span className="text-xs text-muted-foreground">in stock</span>
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => toast.info("Edit coming in Phase 3")}><Pencil className="h-4 w-4" /></Button>
-                <Button variant="ghost" size="icon" onClick={() => toast.info("Delete coming in Phase 3")}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                <Button aria-label={`Edit ${p.name}`} variant="ghost" size="icon" onClick={() => toast.info("Edit coming in Phase 3")}><Pencil className="h-4 w-4" /></Button>
+                <Button aria-label={`Delete ${p.name}`} variant="ghost" size="icon" onClick={() => toast.info("Delete coming in Phase 3")}><Trash2 className="h-4 w-4 text-destructive" /></Button>
               </li>
             ))}
           </ul>

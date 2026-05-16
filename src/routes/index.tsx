@@ -8,13 +8,14 @@ import { Input } from "@/components/ui/input";
 import { categories, useProducts } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
-      { name: "description", content: "Shop fresh fruits, vegetables, grains, dairy and poultry directly from Kenyan farmers. Pay with M-Pesa or card. Same-day delivery." },
-    ],
+  head: () => seoHead({
+    title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen",
+    description: "Shop fresh fruits, vegetables, grains, dairy and poultry directly from Kenyan farmers. Pay with M-Pesa, Airtel Money or card. Same-day delivery in Nairobi.",
+    path: "/",
   }),
 });
 
@@ -33,6 +34,7 @@ function Index() {
           alt="Crates of fresh Kenyan farm produce at golden hour"
           width={1920}
           height={1088}
+          fetchPriority="high"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-hero" />
@@ -59,6 +61,7 @@ function Index() {
                   value={q}
                   onChange={(e) => setQ(e.target.value)}
                   placeholder="What are you cooking today?"
+                  aria-label="Search fresh produce"
                   className="h-11 border-0 bg-transparent pl-10 shadow-none focus-visible:ring-0"
                 />
               </div>
@@ -168,7 +171,7 @@ function Index() {
               </p>
             </div>
             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <Input type="email" placeholder="you@example.com" className="h-12 bg-background text-foreground" />
+              <Input type="email" placeholder="you@example.com" aria-label="Email address for newsletter" className="h-12 bg-background text-foreground" />
               <Button type="submit" variant="secondary" size="lg">Subscribe</Button>
             </form>
           </div>

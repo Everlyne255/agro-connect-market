@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-farm.jpg";
 import { Leaf, HandCoins, Users, Sprout } from "lucide-react";
+import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
-  head: () => ({
-    meta: [
-      { title: "About AgroFresh Market — Built for Kenyan farmers" },
-      { name: "description", content: "AgroFresh Market connects Kenyan farmers and cooperatives directly to homes, restaurants and retailers. Fair prices, fresher food, traceable supply chains." },
-    ],
+  head: () => seoHead({
+    title: "About AgroFresh Market — Built for Kenyan farmers",
+    description: "AgroFresh Market connects Kenyan farmers and cooperatives directly to homes, restaurants and retailers. Fair prices, fresher food, traceable supply chains.",
+    path: "/about",
   }),
 });
 

@@ -3,9 +3,16 @@ import { Users, Tractor, Package, DollarSign, CheckCircle2, XCircle } from "luci
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/admin")({
   component: AdminDashboard,
-  head: () => ({ meta: [{ title: "Admin Dashboard — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Admin dashboard — AgroFresh Market",
+    description: "Platform admin console for monitoring users, farmers, orders and approvals on AgroFresh Market.",
+    path: "/admin",
+    noindex: true,
+  }),
 });
 
 const STATS = [

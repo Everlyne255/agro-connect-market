@@ -13,14 +13,32 @@ const FAQS = [
   { q: "Do you offer bulk / wholesale pricing?", a: "Yes. Restaurants, schools and retailers get tiered pricing — contact our team for a quote." },
 ];
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/faq")({
   component: FaqPage,
-  head: () => ({
-    meta: [
-      { title: "FAQ — AgroFresh Market" },
-      { name: "description", content: "Answers to common questions about delivery, payments, freshness and selling on AgroFresh Market." },
-    ],
-  }),
+  head: () => {
+    const base = seoHead({
+      title: "FAQ — AgroFresh Market",
+      description: "Answers to common questions about delivery, payments, freshness and selling on AgroFresh Market.",
+      path: "/faq",
+    });
+    return {
+      ...base,
+      scripts: [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      }],
+    };
+  },
 });
 
 function FaqPage() {

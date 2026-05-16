@@ -10,9 +10,16 @@ import { Smartphone, CreditCard, Banknote, Truck, CheckCircle2 } from "lucide-re
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/checkout")({
   component: CheckoutPage,
-  head: () => ({ meta: [{ title: "Checkout — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Checkout — AgroFresh Market",
+    description: "Pay securely for your fresh produce order with M-Pesa, Airtel Money, card or cash on delivery.",
+    path: "/checkout",
+    noindex: true,
+  }),
 });
 
 const METHODS = [
@@ -73,12 +80,12 @@ function CheckoutPage() {
           <section className="rounded-2xl border bg-card p-6 shadow-soft">
             <h2 className="font-serif text-xl font-semibold flex items-center gap-2"><Truck className="h-5 w-5 text-primary" /> Delivery details</h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5"><Label>Full name</Label><Input required defaultValue="Jane Wanjiku" /></div>
-              <div className="space-y-1.5"><Label>Phone (M-Pesa)</Label><Input required type="tel" defaultValue="+254 7XX XXX XXX" /></div>
-              <div className="space-y-1.5 sm:col-span-2"><Label>Email</Label><Input type="email" defaultValue="jane@example.com" /></div>
-              <div className="space-y-1.5 sm:col-span-2"><Label>Delivery address</Label><Input required defaultValue="14 Riverside Drive, Westlands" /></div>
-              <div className="space-y-1.5"><Label>City / Town</Label><Input required defaultValue="Nairobi" /></div>
-              <div className="space-y-1.5"><Label>County</Label><Input required defaultValue="Nairobi" /></div>
+              <div className="space-y-1.5"><Label htmlFor="co-name">Full name</Label><Input id="co-name" required defaultValue="Jane Wanjiku" /></div>
+              <div className="space-y-1.5"><Label htmlFor="co-phone">Phone (M-Pesa)</Label><Input id="co-phone" required type="tel" defaultValue="+254 7XX XXX XXX" /></div>
+              <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="co-email">Email</Label><Input id="co-email" type="email" defaultValue="jane@example.com" /></div>
+              <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="co-address">Delivery address</Label><Input id="co-address" required defaultValue="14 Riverside Drive, Westlands" /></div>
+              <div className="space-y-1.5"><Label htmlFor="co-city">City / Town</Label><Input id="co-city" required defaultValue="Nairobi" /></div>
+              <div className="space-y-1.5"><Label htmlFor="co-county">County</Label><Input id="co-county" required defaultValue="Nairobi" /></div>
             </div>
           </section>
 

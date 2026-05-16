@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { seoHead } from "@/lib/seo";
 
 type Search = { q?: string; cat?: Category };
 
@@ -17,11 +18,10 @@ export const Route = createFileRoute("/products")({
     cat: typeof s.cat === "string" ? (s.cat as Category) : undefined,
   }),
   component: ProductsPage,
-  head: () => ({
-    meta: [
-      { title: "Shop fresh produce — AgroFresh Market" },
-      { name: "description", content: "Browse fresh fruits, vegetables, grains, dairy and poultry from Kenyan farms. Filter by category and price." },
-    ],
+  head: () => seoHead({
+    title: "Shop fresh produce — AgroFresh Market",
+    description: "Browse fresh fruits, vegetables, grains, dairy and poultry from Kenyan farms. Filter by category and price, with same-day Nairobi delivery.",
+    path: "/products",
   }),
 });
 
@@ -52,15 +52,15 @@ function ProductsPage() {
         {/* Filters */}
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border bg-card p-5 shadow-soft">
-            <h3 className="flex items-center gap-2 text-sm font-semibold">
+            <h2 className="flex items-center gap-2 text-sm font-semibold">
               <SlidersHorizontal className="h-4 w-4" /> Filters
-            </h3>
+            </h2>
 
             <div className="mt-4">
-              <label className="text-xs font-medium text-muted-foreground">Search</label>
+              <label htmlFor="product-search" className="text-xs font-medium text-muted-foreground">Search</label>
               <div className="relative mt-1">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input value={q} onChange={(e) => setQ(e.target.value)} className="pl-9" placeholder="Search…" />
+                <Input id="product-search" aria-label="Search products" value={q} onChange={(e) => setQ(e.target.value)} className="pl-9" placeholder="Search…" />
               </div>
             </div>
 
@@ -104,8 +104,8 @@ function ProductsPage() {
         <div>
           {(q || cat) && (
             <div className="mb-4 flex flex-wrap gap-2">
-              {q && <Badge variant="secondary">"{q}" <button className="ml-1" onClick={() => setQ("")}>×</button></Badge>}
-              {cat && <Badge variant="secondary">{cat} <button className="ml-1" onClick={() => setCat(undefined)}>×</button></Badge>}
+              {q && <Badge variant="secondary">"{q}" <button aria-label={`Clear search ${q}`} className="ml-1" onClick={() => setQ("")}>×</button></Badge>}
+              {cat && <Badge variant="secondary">{cat} <button aria-label={`Clear category ${cat}`} className="ml-1" onClick={() => setCat(undefined)}>×</button></Badge>}
             </div>
           )}
           {filtered.length === 0 ? (

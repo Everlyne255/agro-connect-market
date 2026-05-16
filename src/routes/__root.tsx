@@ -69,6 +69,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://agro-connect-market.lovable.app";
+const DEFAULT_OG = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3820c9f-c386-4668-ba8a-d9104ab26d74/id-preview-c18dbdf6--a2d1d1b9-4687-4a6f-9c3e-c2eb399ed0a9.lovable.app-1778913297434.png";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -76,20 +79,51 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
       { name: "description", content: "Buy fresh fruits, vegetables, grains, dairy and poultry directly from trusted Kenyan farmers. Pay with M-Pesa, Airtel Money or card." },
-      { property: "og:title", content: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
-      { property: "og:description", content: "Buy fresh fruits, vegetables, grains, dairy and poultry directly from trusted Kenyan farmers. Pay with M-Pesa, Airtel Money or card." },
+      { property: "og:site_name", content: "AgroFresh Market" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: DEFAULT_OG },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
-      { name: "twitter:description", content: "Buy fresh fruits, vegetables, grains, dairy and poultry directly from trusted Kenyan farmers. Pay with M-Pesa, Airtel Money or card." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3820c9f-c386-4668-ba8a-d9104ab26d74/id-preview-c18dbdf6--a2d1d1b9-4687-4a6f-9c3e-c2eb399ed0a9.lovable.app-1778913297434.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3820c9f-c386-4668-ba8a-d9104ab26d74/id-preview-c18dbdf6--a2d1d1b9-4687-4a6f-9c3e-c2eb399ed0a9.lovable.app-1778913297434.png" },
+      { name: "twitter:image", content: DEFAULT_OG },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "AgroFresh Market",
+          url: SITE_URL,
+          logo: DEFAULT_OG,
+          sameAs: [],
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+254-700-123-456",
+            contactType: "customer service",
+            areaServed: "KE",
+            availableLanguage: ["en", "sw"],
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "AgroFresh Market",
+          url: SITE_URL,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: `${SITE_URL}/products?q={search_term_string}`,
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

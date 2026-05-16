@@ -6,14 +6,36 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: "Contact us — AgroFresh Market" },
-      { name: "description", content: "Get in touch with AgroFresh Market. Call, email or chat with our team in Nairobi." },
-    ],
-  }),
+  head: () => {
+    const base = seoHead({
+      title: "Contact AgroFresh Market — Nairobi support",
+      description: "Get in touch with AgroFresh Market. Call, email or chat with our Nairobi team about orders, farming or wholesale supply.",
+      path: "/contact",
+    });
+    return {
+      ...base,
+      scripts: [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "AgroFresh Market",
+          email: "hello@agrofreshmarket.co.ke",
+          telephone: "+254-700-123-456",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Riverside Drive, Westlands",
+            addressLocality: "Nairobi",
+            addressCountry: "KE",
+          },
+        }),
+      }],
+    };
+  },
 });
 
 function ContactPage() {
@@ -32,11 +54,11 @@ function ContactPage() {
           className="rounded-2xl border bg-card p-6 shadow-soft sm:p-8"
         >
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-1.5"><Label>Name</Label><Input required /></div>
-            <div className="space-y-1.5"><Label>Phone</Label><Input type="tel" /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Email</Label><Input required type="email" /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Subject</Label><Input required /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Message</Label><Textarea required rows={5} /></div>
+            <div className="space-y-1.5"><Label htmlFor="c-name">Name</Label><Input id="c-name" required /></div>
+            <div className="space-y-1.5"><Label htmlFor="c-phone">Phone</Label><Input id="c-phone" type="tel" /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-email">Email</Label><Input id="c-email" required type="email" /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-subject">Subject</Label><Input id="c-subject" required /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-message">Message</Label><Textarea id="c-message" required rows={5} /></div>
           </div>
           <Button type="submit" size="lg" className="mt-6">Send message</Button>
         </form>
