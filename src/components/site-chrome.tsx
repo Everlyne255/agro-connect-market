@@ -123,6 +123,51 @@ export function SiteHeader() {
   );
 }
 
+function UserMenu() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  if (!user) {
+    return (
+      <Button variant="ghost" size="icon" asChild>
+        <Link to="/login"><User className="h-5 w-5" /></Link>
+      </Button>
+    );
+  }
+
+  const initials = (user.user_metadata?.full_name || user.email || "U")
+    .split(/\s+/).map((s: string) => s[0]).slice(0, 2).join("").toUpperCase();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-primary/15 text-xs font-semibold text-primary">
+            {initials}
+          </span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild><Link to="/wishlist">Wishlist</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link to="/cart">Cart</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link to="/farmer">Farmer dashboard</Link></DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onClick={async () => {
+            await signOut();
+            toast.success("Signed out");
+            navigate({ to: "/" });
+          }}
+        >
+          <LogOut className="mr-2 h-4 w-4" /> Sign out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t bg-secondary/40">
