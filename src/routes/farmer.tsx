@@ -74,11 +74,11 @@ function FarmerDashboard() {
                   <div className="text-xs text-muted-foreground">{formatKES(p.price)} · {p.unit}</div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Input type="number" defaultValue={p.stock} className="h-9 w-20" />
+                  <Input aria-label={`Stock for ${p.name}`} type="number" defaultValue={p.stock} className="h-9 w-20" />
                   <span className="text-xs text-muted-foreground">in stock</span>
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => toast.info("Edit coming in Phase 3")}><Pencil className="h-4 w-4" /></Button>
-                <Button variant="ghost" size="icon" onClick={() => toast.info("Delete coming in Phase 3")}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                <Button aria-label={`Edit ${p.name}`} variant="ghost" size="icon" onClick={() => toast.info("Edit coming in Phase 3")}><Pencil className="h-4 w-4" /></Button>
+                <Button aria-label={`Delete ${p.name}`} variant="ghost" size="icon" onClick={() => toast.info("Delete coming in Phase 3")}><Trash2 className="h-4 w-4 text-destructive" /></Button>
               </li>
             ))}
           </ul>
