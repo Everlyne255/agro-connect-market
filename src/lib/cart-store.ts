@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react";
-import { products, type Product, finalPrice } from "./products";
+import { productsCache, type Product, finalPrice } from "./products";
 
 type CartItem = { id: string; qty: number };
 const KEY = "agrofresh-cart-v1";
@@ -83,7 +83,7 @@ export const wishlistActions = {
 export function cartWithProducts(items: CartItem[]) {
   return items
     .map((i) => {
-      const p = products.find((x) => x.id === i.id);
+      const p = productsCache.find((x: Product) => x.id === i.id);
       return p ? { product: p, qty: i.qty, lineTotal: finalPrice(p) * i.qty } : null;
     })
     .filter(Boolean) as { product: Product; qty: number; lineTotal: number }[];
