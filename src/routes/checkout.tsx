@@ -10,9 +10,16 @@ import { Smartphone, CreditCard, Banknote, Truck, CheckCircle2 } from "lucide-re
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/checkout")({
   component: CheckoutPage,
-  head: () => ({ meta: [{ title: "Checkout — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Checkout — AgroFresh Market",
+    description: "Pay securely for your fresh produce order with M-Pesa, Airtel Money, card or cash on delivery.",
+    path: "/checkout",
+    noindex: true,
+  }),
 });
 
 const METHODS = [
