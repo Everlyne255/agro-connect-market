@@ -61,6 +61,7 @@ function Index() {
                   value={q}
                   onChange={(e) => setQ(e.target.value)}
                   placeholder="What are you cooking today?"
+                  aria-label="Search fresh produce"
                   className="h-11 border-0 bg-transparent pl-10 shadow-none focus-visible:ring-0"
                 />
               </div>
