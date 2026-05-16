@@ -5,9 +5,16 @@ import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/wishlist")({
   component: WishlistPage,
-  head: () => ({ meta: [{ title: "Wishlist — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Your wishlist — AgroFresh Market",
+    description: "Save your favourite Kenyan farm produce and reorder anytime from your AgroFresh wishlist.",
+    path: "/wishlist",
+    noindex: true,
+  }),
 });
 
 function WishlistPage() {
