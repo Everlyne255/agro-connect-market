@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Leaf } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/register")({
   component: RegisterPage,
@@ -13,7 +14,34 @@ export const Route = createFileRoute("/register")({
 });
 
 function RegisterPage() {
-  const [role, setRole] = useState("buyer");
+  const navigate = useNavigate();
+  const [role, setRole] = useState<"buyer" | "farmer">("buyer");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const redirectUrl = `${window.location.origin}/`;
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: redirectUrl,
+        data: { full_name: fullName, phone, role },
+      },
+    });
+    setLoading(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    toast.success("Account created! Check your email to confirm.");
+    navigate({ to: "/login" });
+  };
 
   return (
     <div className="container mx-auto grid min-h-[80vh] place-items-center px-4 py-12 sm:px-6">
@@ -25,18 +53,15 @@ function RegisterPage() {
 
         <h1 className="mt-6 text-center font-serif text-3xl font-semibold">Create your account</h1>
 
-        <form
-          onSubmit={(e) => { e.preventDefault(); toast.info("Real signup ships in Phase 2 with Lovable Cloud."); }}
-          className="mt-8 space-y-4"
-        >
-          <div className="space-y-1.5"><Label>Full name</Label><Input required /></div>
-          <div className="space-y-1.5"><Label>Email</Label><Input required type="email" /></div>
-          <div className="space-y-1.5"><Label>Phone</Label><Input required type="tel" placeholder="+254…" /></div>
-          <div className="space-y-1.5"><Label>Password</Label><Input required type="password" /></div>
+        <form onSubmit={onSubmit} className="mt-8 space-y-4">
+          <div className="space-y-1.5"><Label>Full name</Label><Input required value={fullName} onChange={(e) => setFullName(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label>Email</Label><Input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label>Phone</Label><Input required type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+254…" /></div>
+          <div className="space-y-1.5"><Label>Password</Label><Input required type="password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} /></div>
 
           <div className="space-y-2">
             <Label>I want to…</Label>
-            <RadioGroup value={role} onValueChange={setRole} className="grid grid-cols-2 gap-2">
+            <RadioGroup value={role} onValueChange={(v) => setRole(v as "buyer" | "farmer")} className="grid grid-cols-2 gap-2">
               <label htmlFor="buyer" className={`flex cursor-pointer items-center gap-2 rounded-xl border p-3 ${role === "buyer" ? "border-primary bg-primary/5" : ""}`}>
                 <RadioGroupItem id="buyer" value="buyer" /> Buy produce
               </label>
@@ -46,7 +71,9 @@ function RegisterPage() {
             </RadioGroup>
           </div>
 
-          <Button type="submit" size="lg" className="w-full">Create account</Button>
+          <Button type="submit" size="lg" className="w-full" disabled={loading}>
+            {loading ? "Creating account…" : "Create account"}
+          </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
