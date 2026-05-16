@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ShoppingCart, Search, Menu, Leaf, Heart, User } from "lucide-react";
+import { ShoppingCart, Search, Menu, Leaf, Heart, User, LogOut } from "lucide-react";
 import { useCart, cartTotals } from "@/lib/cart-store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +7,11 @@ import { useState } from "react";
 import {
   Sheet, SheetContent, SheetTrigger, SheetTitle,
 } from "@/components/ui/sheet";
+import { useAuth, signOut } from "@/hooks/use-auth";
+import {
+  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator, DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -70,9 +75,7 @@ export function SiteHeader() {
           <Button variant="ghost" size="icon" asChild className="hidden sm:inline-flex">
             <Link to="/wishlist"><Heart className="h-5 w-5" /></Link>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link to="/login"><User className="h-5 w-5" /></Link>
-          </Button>
+          <UserMenu />
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link to="/cart">
               <ShoppingCart className="h-5 w-5" />
