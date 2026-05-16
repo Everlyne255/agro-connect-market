@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { products, categories, type Category } from "@/lib/products";
+import { useProducts, categories, type Category } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -30,6 +30,7 @@ function ProductsPage() {
   const [q, setQ] = useState(search.q ?? "");
   const [cat, setCat] = useState<Category | undefined>(search.cat);
   const [price, setPrice] = useState<[number]>([500]);
+  const { data: products = [] } = useProducts();
 
   const filtered = useMemo(() => {
     return products.filter((p) => {

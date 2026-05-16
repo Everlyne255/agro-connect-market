@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { products, formatKES } from "@/lib/products";
+import { useProducts, formatKES } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Pencil, Trash2, Package, TrendingUp, ShoppingBag, DollarSign } from "lucide-react";
@@ -25,6 +25,7 @@ const ORDERS = [
 ];
 
 function FarmerDashboard() {
+  const { data: products = [] } = useProducts();
   const my = products.slice(0, 4);
 
   return (
