@@ -4,9 +4,16 @@ import { formatKES } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/cart")({
   component: CartPage,
-  head: () => ({ meta: [{ title: "Your cart — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Your cart — AgroFresh Market",
+    description: "Review the fresh produce in your AgroFresh cart, adjust quantities, and continue to secure M-Pesa checkout.",
+    path: "/cart",
+    noindex: true,
+  }),
 });
 
 function CartPage() {
