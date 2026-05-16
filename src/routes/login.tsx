@@ -51,12 +51,12 @@ function LoginPage() {
 
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
           <div className="space-y-1.5">
-            <Label>Email</Label>
-            <Input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
+            <Label htmlFor="login-email">Email</Label>
+            <Input id="login-email" required type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
           </div>
           <div className="space-y-1.5">
-            <Label>Password</Label>
-            <Input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+            <Label htmlFor="login-password">Password</Label>
+            <Input id="login-password" required type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
           </div>
           <Button type="submit" size="lg" className="w-full" disabled={loading}>
             {loading ? "Signing in…" : "Sign in"}
