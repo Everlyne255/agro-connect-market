@@ -8,13 +8,14 @@ import { Input } from "@/components/ui/input";
 import { categories, useProducts } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
-      { name: "description", content: "Shop fresh fruits, vegetables, grains, dairy and poultry directly from Kenyan farmers. Pay with M-Pesa or card. Same-day delivery." },
-    ],
+  head: () => seoHead({
+    title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen",
+    description: "Shop fresh fruits, vegetables, grains, dairy and poultry directly from Kenyan farmers. Pay with M-Pesa, Airtel Money or card. Same-day delivery in Nairobi.",
+    path: "/",
   }),
 });
 
