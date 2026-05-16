@@ -39,9 +39,26 @@ function RegisterPage() {
       toast.error(error.message);
       return;
     }
-    toast.success("Account created! Check your email to confirm.");
-    navigate({ to: "/login" });
+    toast.success(`Confirmation email sent to ${email}. Click the link to activate your account.`, { duration: 8000 });
+    setSubmitted(true);
   };
+
+  const [submitted, setSubmitted] = useState(false);
+  if (submitted) {
+    return (
+      <div className="container mx-auto grid min-h-[80vh] place-items-center px-4 py-12 sm:px-6">
+        <div className="w-full max-w-md rounded-3xl border bg-card p-8 text-center shadow-card">
+          <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-gradient-leaf text-primary-foreground"><Leaf className="h-6 w-6" /></span>
+          <h1 className="mt-6 font-serif text-2xl font-semibold">Confirm your email</h1>
+          <p className="mt-3 text-sm text-muted-foreground">
+            We sent a confirmation link to <span className="font-medium text-foreground">{email}</span>.
+            Click it to activate your account, then sign in.
+          </p>
+          <Link to="/login" className="mt-6 inline-block font-semibold text-primary hover:underline">Back to sign in</Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto grid min-h-[80vh] place-items-center px-4 py-12 sm:px-6">
