@@ -6,14 +6,36 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: "Contact us — AgroFresh Market" },
-      { name: "description", content: "Get in touch with AgroFresh Market. Call, email or chat with our team in Nairobi." },
-    ],
-  }),
+  head: () => {
+    const base = seoHead({
+      title: "Contact AgroFresh Market — Nairobi support",
+      description: "Get in touch with AgroFresh Market. Call, email or chat with our Nairobi team about orders, farming or wholesale supply.",
+      path: "/contact",
+    });
+    return {
+      ...base,
+      scripts: [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "AgroFresh Market",
+          email: "hello@agrofreshmarket.co.ke",
+          telephone: "+254-700-123-456",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Riverside Drive, Westlands",
+            addressLocality: "Nairobi",
+            addressCountry: "KE",
+          },
+        }),
+      }],
+    };
+  },
 });
 
 function ContactPage() {
