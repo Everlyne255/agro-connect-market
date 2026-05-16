@@ -48,9 +48,9 @@ function CartPage() {
                 <p className="text-xs text-muted-foreground">{product.unit} · {product.farmer}</p>
                 <div className="mt-auto flex items-center justify-between pt-2">
                   <div className="inline-flex items-center rounded-full border bg-background">
-                    <button onClick={() => cartActions.setQty(product.id, qty - 1)} className="grid h-9 w-9 place-items-center hover:text-primary"><Minus className="h-4 w-4" /></button>
+                    <button aria-label={`Decrease quantity of ${product.name}`} onClick={() => cartActions.setQty(product.id, qty - 1)} className="grid h-9 w-9 place-items-center hover:text-primary"><Minus className="h-4 w-4" /></button>
                     <span className="w-8 text-center text-sm font-semibold">{qty}</span>
-                    <button onClick={() => cartActions.setQty(product.id, qty + 1)} className="grid h-9 w-9 place-items-center hover:text-primary"><Plus className="h-4 w-4" /></button>
+                    <button aria-label={`Increase quantity of ${product.name}`} onClick={() => cartActions.setQty(product.id, qty + 1)} className="grid h-9 w-9 place-items-center hover:text-primary"><Plus className="h-4 w-4" /></button>
                   </div>
                   <div className="text-right">
                     <div className="font-semibold">{formatKES(lineTotal)}</div>
