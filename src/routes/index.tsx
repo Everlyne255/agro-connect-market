@@ -34,6 +34,7 @@ function Index() {
           alt="Crates of fresh Kenyan farm produce at golden hour"
           width={1920}
           height={1088}
+          fetchPriority="high"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-hero" />
