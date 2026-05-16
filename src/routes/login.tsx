@@ -7,9 +7,16 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/login")({
   component: LoginPage,
-  head: () => ({ meta: [{ title: "Sign in — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Sign in — AgroFresh Market",
+    description: "Sign in to AgroFresh Market to track orders, manage your wishlist, and reorder from your favourite Kenyan farms.",
+    path: "/login",
+    noindex: true,
+  }),
 });
 
 function LoginPage() {
