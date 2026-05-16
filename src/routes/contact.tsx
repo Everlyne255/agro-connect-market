@@ -54,11 +54,11 @@ function ContactPage() {
           className="rounded-2xl border bg-card p-6 shadow-soft sm:p-8"
         >
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="space-y-1.5"><Label>Name</Label><Input required /></div>
-            <div className="space-y-1.5"><Label>Phone</Label><Input type="tel" /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Email</Label><Input required type="email" /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Subject</Label><Input required /></div>
-            <div className="space-y-1.5 sm:col-span-2"><Label>Message</Label><Textarea required rows={5} /></div>
+            <div className="space-y-1.5"><Label htmlFor="c-name">Name</Label><Input id="c-name" required /></div>
+            <div className="space-y-1.5"><Label htmlFor="c-phone">Phone</Label><Input id="c-phone" type="tel" /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-email">Email</Label><Input id="c-email" required type="email" /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-subject">Subject</Label><Input id="c-subject" required /></div>
+            <div className="space-y-1.5 sm:col-span-2"><Label htmlFor="c-message">Message</Label><Textarea id="c-message" required rows={5} /></div>
           </div>
           <Button type="submit" size="lg" className="mt-6">Send message</Button>
         </form>
