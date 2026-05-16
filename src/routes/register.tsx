@@ -78,10 +78,10 @@ function RegisterPage() {
         <h1 className="mt-6 text-center font-serif text-3xl font-semibold">Create your account</h1>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
-          <div className="space-y-1.5"><Label>Full name</Label><Input required value={fullName} onChange={(e) => setFullName(e.target.value)} /></div>
-          <div className="space-y-1.5"><Label>Email</Label><Input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-          <div className="space-y-1.5"><Label>Phone</Label><Input required type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+254…" /></div>
-          <div className="space-y-1.5"><Label>Password</Label><Input required type="password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label htmlFor="reg-name">Full name</Label><Input id="reg-name" required value={fullName} onChange={(e) => setFullName(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label htmlFor="reg-email">Email</Label><Input id="reg-email" required type="email" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label htmlFor="reg-phone">Phone</Label><Input id="reg-phone" required type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+254…" /></div>
+          <div className="space-y-1.5"><Label htmlFor="reg-password">Password</Label><Input id="reg-password" required type="password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} /></div>
 
           <div className="space-y-2">
             <Label>I want to…</Label>
