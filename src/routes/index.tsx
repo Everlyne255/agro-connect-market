@@ -171,7 +171,7 @@ function Index() {
               </p>
             </div>
             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <Input type="email" placeholder="you@example.com" className="h-12 bg-background text-foreground" />
+              <Input type="email" placeholder="you@example.com" aria-label="Email address for newsletter" className="h-12 bg-background text-foreground" />
               <Button type="submit" variant="secondary" size="lg">Subscribe</Button>
             </form>
           </div>
