@@ -104,8 +104,8 @@ function ProductsPage() {
         <div>
           {(q || cat) && (
             <div className="mb-4 flex flex-wrap gap-2">
-              {q && <Badge variant="secondary">"{q}" <button className="ml-1" onClick={() => setQ("")}>×</button></Badge>}
-              {cat && <Badge variant="secondary">{cat} <button className="ml-1" onClick={() => setCat(undefined)}>×</button></Badge>}
+              {q && <Badge variant="secondary">"{q}" <button aria-label={`Clear search ${q}`} className="ml-1" onClick={() => setQ("")}>×</button></Badge>}
+              {cat && <Badge variant="secondary">{cat} <button aria-label={`Clear category ${cat}`} className="ml-1" onClick={() => setCat(undefined)}>×</button></Badge>}
             </div>
           )}
           {filtered.length === 0 ? (
