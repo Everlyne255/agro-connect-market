@@ -5,9 +5,16 @@ import { Input } from "@/components/ui/input";
 import { Plus, Pencil, Trash2, Package, TrendingUp, ShoppingBag, DollarSign } from "lucide-react";
 import { toast } from "sonner";
 
+import { seoHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/farmer")({
   component: FarmerDashboard,
-  head: () => ({ meta: [{ title: "Farmer Dashboard — AgroFresh Market" }] }),
+  head: () => seoHead({
+    title: "Farmer dashboard — AgroFresh Market",
+    description: "Manage your farm listings, track stock, and review orders and revenue on AgroFresh Market.",
+    path: "/farmer",
+    noindex: true,
+  }),
 });
 
 const STATS = [
