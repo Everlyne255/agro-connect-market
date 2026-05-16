@@ -17,11 +17,10 @@ export const Route = createFileRoute("/products")({
     cat: typeof s.cat === "string" ? (s.cat as Category) : undefined,
   }),
   component: ProductsPage,
-  head: () => ({
-    meta: [
-      { title: "Shop fresh produce — AgroFresh Market" },
-      { name: "description", content: "Browse fresh fruits, vegetables, grains, dairy and poultry from Kenyan farms. Filter by category and price." },
-    ],
+  head: () => seoHead({
+    title: "Shop fresh produce — AgroFresh Market",
+    description: "Browse fresh fruits, vegetables, grains, dairy and poultry from Kenyan farms. Filter by category and price, with same-day Nairobi delivery.",
+    path: "/products",
   }),
 });
 
