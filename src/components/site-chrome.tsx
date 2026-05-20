@@ -41,7 +41,7 @@ export function SiteHeader() {
             <Leaf className="h-5 w-5" />
           </span>
           <span className="font-serif text-xl font-semibold tracking-tight">
-            AgroFresh <span className="text-primary">Market</span>
+            Rhoda <span className="text-primary">Market</span>
           </span>
         </Link>
 
@@ -177,7 +177,7 @@ export function SiteFooter() {
             <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-leaf text-primary-foreground">
               <Leaf className="h-5 w-5" />
             </span>
-            <span className="font-serif text-lg font-semibold">AgroFresh Market</span>
+            <span className="font-serif text-lg font-semibold">Rhoda</span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
             Connecting Kenyan farmers directly to your kitchen. Fresh, fair, traceable.
@@ -218,7 +218,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t">
         <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6">
-          <span>© {new Date().getFullYear()} AgroFresh Market. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Rhoda. All rights reserved.</span>
           <span>Made in Kenya 🇰🇪 · Pay with M-Pesa, Airtel Money, Card, or COD</span>
         </div>
       </div>

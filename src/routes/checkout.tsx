@@ -15,7 +15,7 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/checkout")({
   component: CheckoutPage,
   head: () => seoHead({
-    title: "Checkout — AgroFresh Market",
+    title: "Checkout — Rhoda",
     description: "Pay securely for your fresh produce order with M-Pesa, Airtel Money, card or cash on delivery.",
     path: "/checkout",
     noindex: true,

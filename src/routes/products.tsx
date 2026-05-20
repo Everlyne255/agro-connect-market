@@ -19,7 +19,7 @@ export const Route = createFileRoute("/products")({
   }),
   component: ProductsPage,
   head: () => seoHead({
-    title: "Shop fresh produce — AgroFresh Market",
+    title: "Shop fresh produce — Rhoda",
     description: "Browse fresh fruits, vegetables, grains, dairy and poultry from Kenyan farms. Filter by category and price, with same-day Nairobi delivery.",
     path: "/products",
   }),
