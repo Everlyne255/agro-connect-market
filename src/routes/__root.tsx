@@ -77,9 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen" },
+      { title: "Rhoda — Fresh from Kenyan farms to your kitchen" },
       { name: "description", content: "Buy fresh fruits, vegetables, grains, dairy and poultry directly from trusted Kenyan farmers. Pay with M-Pesa, Airtel Money or card." },
-      { property: "og:site_name", content: "AgroFresh Market" },
+      { property: "og:site_name", content: "Rhoda" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: DEFAULT_OG },
       { name: "twitter:card", content: "summary_large_image" },
@@ -97,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "AgroFresh Market",
+          name: "Rhoda",
           url: SITE_URL,
           logo: DEFAULT_OG,
           sameAs: [],
@@ -115,7 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "AgroFresh Market",
+          name: "Rhoda",
           url: SITE_URL,
           potentialAction: {
             "@type": "SearchAction",

@@ -10,8 +10,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/wishlist")({
   component: WishlistPage,
   head: () => seoHead({
-    title: "Your wishlist — AgroFresh Market",
-    description: "Save your favourite Kenyan farm produce and reorder anytime from your AgroFresh wishlist.",
+    title: "Your wishlist — Rhoda",
+    description: "Save your favourite Kenyan farm produce and reorder anytime from your Rhoda wishlist.",
     path: "/wishlist",
     noindex: true,
   }),

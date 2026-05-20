@@ -12,8 +12,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/login")({
   component: LoginPage,
   head: () => seoHead({
-    title: "Sign in — AgroFresh Market",
-    description: "Sign in to AgroFresh Market to track orders, manage your wishlist, and reorder from your favourite Kenyan farms.",
+    title: "Sign in — Rhoda",
+    description: "Sign in to Rhoda to track orders, manage your wishlist, and reorder from your favourite Kenyan farms.",
     path: "/login",
     noindex: true,
   }),
@@ -43,7 +43,7 @@ function LoginPage() {
       <div className="w-full max-w-md rounded-3xl border bg-card p-8 shadow-card">
         <Link to="/" className="flex items-center justify-center gap-2">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-leaf text-primary-foreground"><Leaf className="h-5 w-5" /></span>
-          <span className="font-serif text-xl font-semibold">AgroFresh Market</span>
+          <span className="font-serif text-xl font-semibold">Rhoda</span>
         </Link>
 
         <h1 className="mt-6 text-center font-serif text-3xl font-semibold">Welcome back</h1>
@@ -64,7 +64,7 @@ function LoginPage() {
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          New to AgroFresh? <Link to="/register" className="font-semibold text-primary hover:underline">Create an account</Link>
+          New to Rhoda? <Link to="/register" className="font-semibold text-primary hover:underline">Create an account</Link>
         </p>
       </div>
     </div>
