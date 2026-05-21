@@ -8,8 +8,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/admin")({
   component: AdminDashboard,
   head: () => seoHead({
-    title: "Admin dashboard — Rhoda",
-    description: "Platform admin console for monitoring users, farmers, orders and approvals on Rhoda.",
+    title: "Admin dashboard — AgroFresh Market",
+    description: "Platform admin console for monitoring users, farmers, orders and approvals on AgroFresh Market.",
     path: "/admin",
     noindex: true,
   }),

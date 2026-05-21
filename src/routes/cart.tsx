@@ -9,8 +9,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/cart")({
   component: CartPage,
   head: () => seoHead({
-    title: "Your cart — Rhoda",
-    description: "Review the fresh produce in your Rhoda cart, adjust quantities, and continue to secure M-Pesa checkout.",
+    title: "Your cart — AgroFresh Market",
+    description: "Review the fresh produce in your AgroFresh Market cart, adjust quantities, and continue to secure M-Pesa checkout.",
     path: "/cart",
     noindex: true,
   }),

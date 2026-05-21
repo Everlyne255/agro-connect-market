@@ -13,7 +13,7 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => seoHead({
-    title: "Rhoda — Fresh from Kenyan farms to your kitchen",
+    title: "AgroFresh Market — Fresh from Kenyan farms to your kitchen",
     description: "Shop fresh fruits, vegetables, grains, dairy and poultry directly from Kenyan farmers. Pay with M-Pesa, Airtel Money or card. Same-day delivery in Nairobi.",
     path: "/",
   }),
@@ -47,7 +47,7 @@ function Index() {
               Real food, from real Kenyan farms.
             </h1>
             <p className="mt-5 max-w-xl text-base text-primary-foreground/90 sm:text-lg">
-              Rhoda connects farmers and cooperatives directly to homes,
+              AgroFresh Market connects farmers and cooperatives directly to homes,
               restaurants and retailers — no middlemen, fairer prices, fresher food.
             </p>
 
@@ -120,7 +120,7 @@ function Index() {
       {/* How it works */}
       <section className="container mx-auto px-4 py-20 sm:px-6">
         <div className="rounded-3xl bg-secondary/60 p-8 sm:p-12">
-          <h2 className="font-serif text-3xl font-semibold text-center">How Rhoda works</h2>
+          <h2 className="font-serif text-3xl font-semibold text-center">How AgroFresh Market works</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {[
               { n: "01", t: "Browse the harvest", d: "Discover what's freshly picked from farms across Kenya." },
@@ -143,7 +143,7 @@ function Index() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
             { name: "Wanjiku M.", role: "Home cook, Nairobi", q: "The sukuma stays fresh for days. I've stopped going to the market." },
-            { name: "Chef Kamau", role: "Hotel kitchen, Naivasha", q: "Traceability matters to us. Rhoda tells me exactly which farm each crate came from." },
+            { name: "Chef Kamau", role: "Hotel kitchen, Naivasha", q: "Traceability matters to us. AgroFresh Market tells me exactly which farm each crate came from." },
             { name: "Achieng' O.", role: "Wholesaler, Kisumu", q: "Bulk pricing and reliable supply. My customers notice the difference." },
           ].map((t) => (
             <figure key={t.name} className="rounded-2xl border bg-card p-6 shadow-soft">

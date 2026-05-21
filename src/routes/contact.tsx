@@ -12,8 +12,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => {
     const base = seoHead({
-      title: "Contact Rhoda — Nairobi support",
-      description: "Get in touch with Rhoda. Call, email or chat with our Nairobi team about orders, farming or wholesale supply.",
+      title: "Contact AgroFresh Market — Nairobi support",
+      description: "Get in touch with AgroFresh Market. Call, email or chat with our Nairobi team about orders, farming or wholesale supply.",
       path: "/contact",
     });
     return {
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/contact")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          name: "Rhoda",
+          name: "AgroFresh Market",
           email: "hello@agrofreshmarket.co.ke",
           telephone: "+254-700-123-456",
           address: {
