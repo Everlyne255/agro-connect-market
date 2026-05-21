@@ -1,5 +1,5 @@
 export const SITE_URL = "https://agro-connect-market.lovable.app";
-export const SITE_NAME = "Rhoda";
+export const SITE_NAME = "AgroFresh Market";
 export const DEFAULT_OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3820c9f-c386-4668-ba8a-d9104ab26d74/id-preview-c18dbdf6--a2d1d1b9-4687-4a6f-9c3e-c2eb399ed0a9.lovable.app-1778913297434.png";
 

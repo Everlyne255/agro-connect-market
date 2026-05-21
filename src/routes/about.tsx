@@ -6,8 +6,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => seoHead({
-    title: "About Rhoda — Built for Kenyan farmers",
-    description: "Rhoda connects Kenyan farmers and cooperatives directly to homes, restaurants and retailers. Fair prices, fresher food, traceable supply chains.",
+    title: "About AgroFresh Market — Built for Kenyan farmers",
+    description: "AgroFresh Market connects Kenyan farmers and cooperatives directly to homes, restaurants and retailers. Fair prices, fresher food, traceable supply chains.",
     path: "/about",
   }),
 });
@@ -22,7 +22,7 @@ function AboutPage() {
           <div className="max-w-2xl text-primary-foreground">
             <h1 className="font-serif text-4xl font-semibold sm:text-5xl">A fairer food system for Kenya.</h1>
             <p className="mt-4 text-lg text-primary-foreground/90">
-              We built Rhoda so smallholder farmers can sell straight to the people
+              We built AgroFresh Market so smallholder farmers can sell straight to the people
               who eat their food — keeping more value on the farm and more freshness on your plate.
             </p>
           </div>
@@ -33,7 +33,7 @@ function AboutPage() {
         <div>
           <h2 className="font-serif text-3xl font-semibold">Our story</h2>
           <p className="mt-4 leading-relaxed text-foreground/85">
-            Founded in 2024 in Nairobi, Rhoda started as a WhatsApp group connecting
+            Founded in 2024 in Nairobi, AgroFresh Market started as a WhatsApp group connecting
             five cooperatives in Kiambu and Nyeri to local restaurants. Today we work with
             over 200 farms across 12 counties.
           </p>

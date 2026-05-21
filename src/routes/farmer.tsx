@@ -10,8 +10,8 @@ import { seoHead } from "@/lib/seo";
 export const Route = createFileRoute("/farmer")({
   component: FarmerDashboard,
   head: () => seoHead({
-    title: "Farmer dashboard — Rhoda",
-    description: "Manage your farm listings, track stock, and review orders and revenue on Rhoda.",
+    title: "Farmer dashboard — AgroFresh Market",
+    description: "Manage your farm listings, track stock, and review orders and revenue on AgroFresh Market.",
     path: "/farmer",
     noindex: true,
   }),

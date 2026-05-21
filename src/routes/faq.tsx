@@ -9,7 +9,7 @@ const FAQS = [
   { q: "What payment methods do you accept?", a: "M-Pesa, Airtel Money, Visa & Mastercard, plus Cash on Delivery for orders under KES 5,000." },
   { q: "Is there a minimum order?", a: "No minimum. Free delivery on orders above KES 2,000 — a KES 200 fee applies below that." },
   { q: "Can I return or refund?", a: "If anything arrives damaged or below standard, we'll refund or replace within 24 hours. Just message support with a photo." },
-  { q: "How can I sell on Rhoda?", a: "Apply through our Farmer Dashboard. We verify your farm, list your products, and pay out weekly via M-Pesa." },
+  { q: "How can I sell on AgroFresh Market?", a: "Apply through our Farmer Dashboard. We verify your farm, list your products, and pay out weekly via M-Pesa." },
   { q: "Do you offer bulk / wholesale pricing?", a: "Yes. Restaurants, schools and retailers get tiered pricing — contact our team for a quote." },
 ];
 
@@ -19,8 +19,8 @@ export const Route = createFileRoute("/faq")({
   component: FaqPage,
   head: () => {
     const base = seoHead({
-      title: "FAQ — Rhoda",
-      description: "Answers to common questions about delivery, payments, freshness and selling on Rhoda.",
+      title: "FAQ — AgroFresh Market",
+      description: "Answers to common questions about delivery, payments, freshness and selling on AgroFresh Market.",
       path: "/faq",
     });
     return {

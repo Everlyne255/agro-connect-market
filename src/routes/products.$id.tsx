@@ -17,9 +17,9 @@ export const Route = createFileRoute("/products/$id")({
     return p;
   },
   head: ({ loaderData, params }) => {
-    if (!loaderData) return seoHead({ title: "Product — Rhoda", description: "Fresh produce from Kenyan farms.", path: `/products/${params.id}` });
+    if (!loaderData) return seoHead({ title: "Product — AgroFresh Market", description: "Fresh produce from Kenyan farms.", path: `/products/${params.id}` });
     const base = seoHead({
-      title: `${loaderData.name} — Rhoda`,
+      title: `${loaderData.name} — AgroFresh Market`,
       description: loaderData.description.slice(0, 160),
       path: `/products/${params.id}`,
       image: loaderData.image,
