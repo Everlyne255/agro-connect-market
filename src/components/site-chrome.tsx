@@ -41,7 +41,7 @@ export function SiteHeader() {
             <Leaf className="h-5 w-5" />
           </span>
           <span className="font-serif text-xl font-semibold tracking-tight">
-            Rhoda <span className="text-primary">Market</span>
+            AgroFresh <span className="text-primary">Market</span>
           </span>
         </Link>
 
